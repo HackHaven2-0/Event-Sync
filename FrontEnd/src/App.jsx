@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Router>
+      
         <Routes>
           <Route path="/" element={<LandingPage />} />
           {/* Add more routes as you build out your application */}
@@ -15,7 +15,8 @@ function App() {
           {/* <Route path="/signup" element={<Signup />} /> */}
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         </Routes>
-      </Router>
+      
     </div>
   );
 }
+export default App;

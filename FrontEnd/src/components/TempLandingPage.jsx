@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from './navbar';
-import Hero from './hero';
-import Features from './features';
+import Navbar from './Navbar';
+import Hero from './Hero';
+import Features from './Features';
 // import HowItWorks from './HowItWorks';
 // import Testimonials from './Testimonials';
 // import CallToAction from './CallToAction';
