@@ -1,12 +1,12 @@
-import React from 'react';
-import Navbar from './Navbar';
-import Hero from './Hero';
-import Features from './Features';
+import React from "react";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import Features from "../components/Features";
 // import HowItWorks from './HowItWorks';
 // import Testimonials from './Testimonials';
 // import CallToAction from './CallToAction';
 // import Footer from './Footer';
-import '../styles/LandingPage.css';
+import "../styles/LandingPage.css";
 
 const LandingPage = () => {
   return (
