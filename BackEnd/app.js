@@ -17,7 +17,7 @@ connectDb()
 app.get('/', (req, res) => {
     res.send('Welcome to the HackHaven 2.0 Backend!');
 });
-app.
+
 
 
 app.listen(port, () => {
