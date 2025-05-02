@@ -6,12 +6,10 @@ import Features from "../components/Features";
 // import Testimonials from './Testimonials';
 // import CallToAction from './CallToAction';
 // import Footer from './Footer';
-import "../styles/LandingPage.css";
 
 const LandingPage = () => {
   return (
-    <div className="landing-page">
-      <h1>landing page</h1>
+    <div className="min-h-screen w-full font-[Poppins] text-gray-800 bg-white overflow-x-hidden">
       <Navbar />
       <Hero />
       <Features />
