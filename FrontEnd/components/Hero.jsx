@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -35,14 +35,14 @@ const Hero = () => {
             Plan and Manage Events with Ease
           </h1>
           <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
-            The all-in-one platform for creating, managing, and promoting your events. 
-            From small gatherings to large conferences — we've got you covered.
+            The all-in-one platform for creating, managing, and promoting your
+            events. From small gatherings to large conferences — we've got you
+            covered.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <Link 
-              to="/signup" 
-              className="bg-indigo-600 text-white py-3 px-6 rounded-md font-medium transition-all duration-300 hover:bg-indigo-700"
-            >
+            <Link
+              to="/Signup"
+              className="bg-indigo-600 text-white py-3 px-6 rounded-md font-medium transition-all duration-300 hover:bg-indigo-700">
               Get Started Free
             </Link>
           </div>
@@ -50,9 +50,9 @@ const Hero = () => {
 
         {/* Image Section */}
         <div className="flex-1 w-full md:w-1/2">
-          <img 
-            src="https://devfolio.co/static/community-4-90a8b18ff177d862991ea8cc7a1de011.png" 
-            alt="Event Management" 
+          <img
+            src="https://devfolio.co/static/community-4-90a8b18ff177d862991ea8cc7a1de011.png"
+            alt="Event Management"
             className="w-full h-60 md:h-80 object-cover rounded-lg"
           />
         </div>
