@@ -3,8 +3,32 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <div className="bg-gray-100 py-16 px-4 md:py-24 md:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <div className="relative bg-white py-16 px-4 md:py-24 md:px-8 overflow-hidden">
+      {/* Internal CSS for animation */}
+      <style>
+        {`
+          @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          .animate-gradientMove {
+            background: linear-gradient(to right, #e0e7ff, #ffffff, #e0e7ff);
+            background-size: 200% 200%;
+            animation: gradientMove 8s ease infinite;
+            opacity: 0.3;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+          }
+        `}
+      </style>
+
+      {/* Animated Background Layer */}
+      <div className="animate-gradientMove"></div>
+
+      {/* Content Layer */}
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         {/* Text Section */}
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-6">
@@ -21,20 +45,16 @@ const Hero = () => {
             >
               Get Started Free
             </Link>
-            <Link 
-              to="/demo" 
-              className="bg-transparent border-2 border-indigo-600 text-indigo-600 py-3 px-6 rounded-md font-medium transition-all duration-300 hover:bg-indigo-100"
-            >
-              Request Demo
-            </Link>
           </div>
         </div>
 
-        {/* Image Placeholder */}
-        <div className="flex-1 flex justify-center items-center">
-          <div className="bg-gray-300 w-full h-60 md:h-80 rounded-lg flex justify-center items-center text-gray-600 font-medium">
-            Event Planning Illustration
-          </div>
+        {/* Image Section */}
+        <div className="flex-1 w-full md:w-1/2">
+          <img 
+            src="https://devfolio.co/static/community-4-90a8b18ff177d862991ea8cc7a1de011.png" 
+            alt="Event Management" 
+            className="w-full h-60 md:h-80 object-cover rounded-lg"
+          />
         </div>
       </div>
     </div>
