@@ -35,10 +35,10 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-24 px-4 max-w-7xl mx-auto scroll-mt-20">
+    <section  className="py-24 px-4 max-w-7xl mx-auto scroll-mt-20">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-gray-800">Powerful Features for Event Planners</h2>
-        <p className="text-lg text-gray-600 mt-4">Everything you need to create successful events</p>
+        <h2  id="features" className="text-4xl font-bold text-gray-800">Powerful Features for Event Planners</h2>
+        <p   className="text-lg text-gray-600 mt-4">Everything you need to create successful events</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
