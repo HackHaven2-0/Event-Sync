@@ -257,8 +257,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 
-const LoginSignup = () => {
-  const [isLogin, setIsLogin] = useState(true);
+const LoginSignup = ({ flag }) => {
+  const [isLogin, setIsLogin] = useState(flag);
 
   const panelVariants = {
     hidden: { x: "100%", opacity: 0 },

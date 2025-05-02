@@ -33,12 +33,12 @@ const Navbar = () => {
           {/* Desktop Auth Links */}
           <div className="hidden md:flex space-x-4">
             <Link
-              to="/login"
+              to="/Login"
               className="text-gray-800 hover:text-indigo-600 text-lg">
               Log In
             </Link>
             <Link
-              to="/signup"
+              to="/Signup"
               className="text-gray-800 hover:text-indigo-600 text-lg">
               Sign Up
             </Link>
