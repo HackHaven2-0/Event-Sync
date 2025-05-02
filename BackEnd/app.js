@@ -1,25 +1,25 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const morgan  = require('morgan');
-const cors = require('cors');
-const connectDb = require('./src/config/db');
+import express from "express";
+import dotenv from "dotenv";
+import morgan from "morgan";
+import cors from "cors";
+import connectDb from "./src/config/db.js";
+import userRouter from "./src/api/user/routes/userRoutes.js";
+import authRouter from "./src/api/auth/routes/authRoutes.js";
+
 const app = express();
 
 dotenv.config();
-const port = process.env.PORT || 3000;
-
 app.use(cors());
-app.use(morgan('dev'));
-
 app.use(express.json());
+app.use(morgan("dev"));
 
-connectDb()
-app.get('/', (req, res) => {
-    res.send('Welcome to the HackHaven 2.0 Backend!');
-});
+const port = process.env.PORT || 9000;
 
+connectDb();
+app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);
 
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
