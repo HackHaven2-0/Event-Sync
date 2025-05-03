@@ -10,12 +10,13 @@ const EventCard = ({ event }) => {
 
   return (
     <motion.div
-      className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white border border-gray-200 hover:shadow-2xl transition-shadow duration-300"
+      key={`event-card-${event.id}`}
+      className="m-3 max-w-sm rounded-lg overflow-hidden shadow-lg bg-white border border-gray-200 hover:shadow-2xl transition-shadow duration-300"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}>
       {/* Banner Image */}
       <motion.img
-        className="w-full h-48 object-cover rounded-t-lg"
+        className="w-full h-60 object-cover rounded-t-lg"
         src={event.banner}
         alt={event.title}
         initial={{ opacity: 0 }}

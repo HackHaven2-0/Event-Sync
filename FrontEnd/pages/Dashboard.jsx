@@ -11,7 +11,6 @@ const Dashboard = () => {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-
   useEffect(() => {
     const fetchEvents = async () => {
       setIsLoading(true);
@@ -55,16 +54,14 @@ const Dashboard = () => {
       <div className="p-6 bg-white shadow-md flex flex-wrap items-center gap-4">
         <button
           onClick={() => (window.location.href = "/dashboard/events")}
-          className="bg-indigo-600 text-white px-6 py-3 rounded-lg cursor-pointer transform transition-transform duration-300 hover:scale-110 hover:shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 active:scale-95"
-        >
+          className="bg-indigo-600 text-white px-6 py-3 rounded-lg cursor-pointer transform transition-transform duration-300 hover:scale-110 hover:shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 active:scale-95">
           <span className="flex items-center space-x-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+              stroke="currentColor">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -89,8 +86,7 @@ const Dashboard = () => {
             className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+            stroke="currentColor">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -103,8 +99,7 @@ const Dashboard = () => {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
-        >
+          className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer">
           <option value="">All Status</option>
           <option value="upcoming">Upcoming</option>
           <option value="ongoing">Ongoing</option>
@@ -114,8 +109,7 @@ const Dashboard = () => {
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
-        >
+          className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer">
           <option value="">All Categories</option>
           <option value="sports">Sports</option>
           <option value="music">Music</option>
@@ -136,15 +130,14 @@ const Dashboard = () => {
           ? Array.from({ length: 6 }).map((_, index) => (
               <div
                 key={index}
-                className="p-4 bg-white rounded-lg shadow-md animate-pulse"
-              >
+                className="p-4 bg-white rounded-lg shadow-md animate-pulse">
                 <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
                 <div className="h-4 bg-gray-300 rounded w-1/2 mb-2"></div>
                 <div className="h-4 bg-gray-300 rounded w-1/3"></div>
               </div>
             ))
           : filteredEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
+              <EventCard key={event._id} event={event} />
             ))}
       </div>
     </div>
