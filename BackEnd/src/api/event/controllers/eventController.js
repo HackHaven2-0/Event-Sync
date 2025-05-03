@@ -20,18 +20,24 @@ const createEvent = async (req, res) => {
     }
 };
 const getAllEvents = async (req,res)=>{
-    const events = await Event.find({});
-    if((events.length) === 0){
-        return res.status(404).json({message:"No events found"});
+    try{
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const query = req.params.query;
+    if (query) {
+        const events = await Event.find({ title: { $regex: query, $options: "i" } });
+        return res.status(200).json(events);
     }
-    res.status(200).json({events});
+
+    const events = await Event.find({});
+    res.status(200).json(events);}
+    catch(error){
+        res.status(500).json({message:"Error fetching events", error});
+    }
 }
 const getEventById = async (req, res) => {
     const { id } = req.params;
     const event = await Event.find({ _id: id });
-    if (!event) {
-        return res.status(404).json({ message: "Event not found" });
-    }
     res.status(200).json({ event });
 }
 
