@@ -23,12 +23,19 @@ export const updateUserProfile = async (req, res) => {
 
 export const getOrganizerEvents = async (req, res) => {
   try {
-    if (req.user.role !== "organizer") {
-      return res.status(403).json({ success: false, message: "Access denied" });
-    }
+    console.log("Organizer ID:", req.user.id); // Debugging line
     const events = await UserService.getEventsByOrganizer(req.user.id);
     res.status(200).json({ success: true, data: events });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const getAttendedEvents = async (req, res) => {
+  try {
+    const events = await UserService.getEventsByAttendee(req.user.id);
+    res.status(200).json({ success: true, data: events });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+}
