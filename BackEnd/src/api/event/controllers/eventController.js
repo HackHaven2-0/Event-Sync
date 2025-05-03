@@ -1,5 +1,6 @@
-const Event = require("../../../model/eventModel.js");
-const jwt = require("jsonwebtoken");
+import Event from "../../../model/eventModel.js";
+import jwt from "jsonwebtoken";
+import User from "../../../model/userModel.js";
 
 // Mock database
 
@@ -67,13 +68,4 @@ const getEventsByOrganizer = async (req, res) => {
 }
 
 
-
-
-module.exports = {
-    createEvent,
-    getAllEvents,
-    getEventById,
-    updateEvent,
-    deleteEvent,
-    getEventsByOrganizer
-};
+export { createEvent, getAllEvents, getEventById, updateEvent, deleteEvent, getEventsByOrganizer };
