@@ -17,11 +17,6 @@ const authMiddleware = async (req, res, next) => {
   }
 };
 
-const organizerMiddleware = (req, res, next) => {
-  if (req.user.role !== 'organizer') {
-    return res.status(403).json({ message: 'Access denied. Organizers only.' });
-  }
-  next();
-};
 
-export { authMiddleware, organizerMiddleware };
+
+export { authMiddleware };
