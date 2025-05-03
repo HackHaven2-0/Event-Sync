@@ -18,6 +18,7 @@ const port = process.env.PORT || 9000;
 connectDb();
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/users", userRoute);
 
 
 app.listen(port, () => {

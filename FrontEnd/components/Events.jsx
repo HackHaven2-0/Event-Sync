@@ -21,9 +21,9 @@ const Events = () => {
     ];
   
     return (
-      <section id="events" className="py-24 px-4 bg-gray-50">
+      <section  className="py-24 px-4 bg-gray-50">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800">Upcoming Events</h2>
+          <h2 id="events" className="text-4xl font-bold text-gray-800">Upcoming Events</h2>
           <p className="text-lg text-gray-600 mt-4">Stay ahead with our exciting events and workshops</p>
         </div>
   
