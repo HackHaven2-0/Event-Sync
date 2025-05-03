@@ -6,23 +6,22 @@ import EventCard from "../components/EventCard";
 const Dashboard = () => {
   const [events, setEvents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+
   const [statusFilter, setStatusFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+
   useEffect(() => {
-    setIsLoading(true);
     const fetchEvents = async () => {
+      setIsLoading(true);
       try {
-        const response = await axios.get(
-          "http://localhost:9000/api/events",
-          {
-            params: { query: searchQuery },
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const response = await axios.get("http://localhost:9000/api/events", {
+          params: { query: searchQuery },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         setEvents(response.data);
       } catch (error) {
         window.location.href = "/login";
@@ -49,38 +48,73 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
+      {/* Navbar */}
       <NavDash />
 
       {/* Filters and Search */}
-      <div className="p-6 bg-white shadow-md flex flex-wrap items-center space-x-4">
+      <div className="p-6 bg-white shadow-md flex flex-wrap items-center gap-4">
         <button
           onClick={() => (window.location.href = "/dashboard/events")}
-          className="bg-indigo-600 text-white px-4 py-2 rounded-lg"
+          className="bg-indigo-600 text-white px-6 py-3 rounded-lg cursor-pointer transform transition-transform duration-300 hover:scale-110 hover:shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 active:scale-95"
         >
-          Host Event
+          <span className="flex items-center space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+            <span>Host Event</span>
+          </span>
         </button>
-        <input
-        
-          type="text"
-          placeholder="Search events..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="flex-1 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        />
+
+        <div className="relative flex-1">
+          <input
+            type="text"
+            placeholder="Search events..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full p-3 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-4.35-4.35M16.65 10.65a6 6 0 11-12 0 6 6 0 0112 0z"
+            />
+          </svg>
+        </div>
+
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
         >
           <option value="">All Status</option>
           <option value="upcoming">Upcoming</option>
           <option value="ongoing">Ongoing</option>
           <option value="completed">Completed</option>
         </select>
+
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
         >
           <option value="">All Categories</option>
           <option value="sports">Sports</option>
