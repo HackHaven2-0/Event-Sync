@@ -1,26 +1,37 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NavDash from "../components/NavDash";
+import EventCard from "../components/EventCard";
 
 const Dashboard = () => {
   const [events, setEvents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+
   const [statusFilter, setStatusFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Fetch events from the backend
+
   useEffect(() => {
     const fetchEvents = async () => {
+      setIsLoading(true);
       try {
-        const response = await axios.get("http://localhost:9000/api/events");
+        const response = await axios.get("http://localhost:9000/api/events", {
+          params: { query: searchQuery },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         setEvents(response.data);
       } catch (error) {
+        window.location.href = "/login";
         console.error("Error fetching events:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
-
     fetchEvents();
-  }, []);
+  }, [searchQuery]);
 
   // Filter events based on search query, status, and category
   const filteredEvents = events.filter((event) => {
@@ -120,33 +131,21 @@ const Dashboard = () => {
       </div>
 
       {/* Event Cards */}
-      <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredEvents.map((event) => (
-          <div
-            key={event._id}
-            className="bg-white shadow-md rounded-lg p-4 flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-lg"
-          >
-            <img
-              src={event.banner}
-              alt={event.title}
-              className="w-full h-40 object-cover rounded-lg mb-4"
-            />
-            <h2 className="text-xl font-bold text-gray-800">{event.title}</h2>
-            <p className="text-gray-600">{event.description}</p>
-            <p className="text-gray-500 text-sm mt-2">
-              <strong>Date:</strong> {new Date(event.date).toLocaleDateString()}
-            </p>
-            <p className="text-gray-500 text-sm">
-              <strong>Location:</strong> {event.location}
-            </p>
-            <p className="text-gray-500 text-sm">
-              <strong>Status:</strong> {event.status}
-            </p>
-            <p className="text-gray-500 text-sm">
-              <strong>Category:</strong> {event.category}
-            </p>
-          </div>
-        ))}
+      <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {isLoading
+          ? Array.from({ length: 6 }).map((_, index) => (
+              <div
+                key={index}
+                className="p-4 bg-white rounded-lg shadow-md animate-pulse"
+              >
+                <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
+                <div className="h-4 bg-gray-300 rounded w-1/2 mb-2"></div>
+                <div className="h-4 bg-gray-300 rounded w-1/3"></div>
+              </div>
+            ))
+          : filteredEvents.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
       </div>
     </div>
   );

@@ -1,22 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const EventCard = () => {
-  const event = {
-    title: "Art & Creativity Expo",
-    description:
-      "Explore the world of art and creativity with exhibitions, workshops, and live performances.",
-    date: new Date("2025-07-20T12:00:00Z"),
-    organizerId: "645a1b2c3d4e5f6789012348",
-    attendees: ["645a1b2c3d4e5f6789012349", "645a1b2c3d4e5f6789012350"],
-    location: "456 Art Street, New York, NY, USA",
-    category: "art",
-    banner:
-      "https://img.freepik.com/free-psd/neon-horizontal-banner-template-electronic-music-with-female-dj_23-2148979684.jpg?t=st=1746213045~exp=1746216645~hmac=643d6ab7ff0eadae44ff0a70758d21b057c5a605057347ed134d673c72c3a996&w=1380",
-    status: "upcoming",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
+const EventCard = ({ event }) => {
+  const formattedDate = new Date(event.date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <motion.div
@@ -54,7 +44,7 @@ const EventCard = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}>
-          <span className="font-medium">{event.date.toLocaleDateString()}</span>
+          <span className="font-medium">{formattedDate}</span>
           <span className="font-medium">{event.location}</span>
         </motion.div>
       </div>
