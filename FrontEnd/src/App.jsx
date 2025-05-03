@@ -14,6 +14,7 @@ function App() {
         <Route path="/card" element={<EventCard />} />
         <Route path="/Login" element={<LoginSignup flag={true} />} />
         <Route path="/Signup" element={<LoginSignup flag={false} />} />
+        
         {/* Add more routes as you build out your application */}
         {/* <Route path="/login" element={<Login />} /> */}
         {/* <Route path="/signup" element={<Signup />} /> */}

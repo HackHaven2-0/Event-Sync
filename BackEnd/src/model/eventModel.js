@@ -54,6 +54,7 @@ const eventSchema = new mongoose.Schema(
       enum: ["upcoming", "ongoing", "completed"],
       default: "upcoming",
     },
+    
   },
   { timestamps: true }
 );
