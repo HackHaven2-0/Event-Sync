@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
-import User from "../../model/userModel.js";
+import User from "../../../model/userModel.js";
+
 
 export const authenticate = async (req, res, next) => {
   const token = req.header("Authorization")?.replace("Bearer ", "");
@@ -20,8 +21,7 @@ export const authenticate = async (req, res, next) => {
   }
 };
 
-import Event from "../../../model/eventModel";
-import User from "../../../model/userModel";
+import Event from "../../../model/eventModel.js";
 
 
 const getUserById = async (id) => {

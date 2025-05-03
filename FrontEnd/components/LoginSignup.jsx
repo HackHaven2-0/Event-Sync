@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 import axios from "axios";
-
+// motion.useAnimation();
 const LoginSignup = ({ flag }) => {
   const [isLogin, setIsLogin] = useState(flag);
   const [step, setStep] = useState(1); // Step 1: Name & Email, Step 2: OTP, Step 3: Password
@@ -19,6 +20,36 @@ const LoginSignup = ({ flag }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  const handleLogin = async (e) => {
+    console.log("Login function called");
+    e.preventDefault();
+    try {
+      const username = e.target.username.value;
+      const password = e.target.password.value;
+      console.log(username, password);
+      if (!username || !password) {
+        setError("Please fill in all fields");
+        return;
+      }
+      setIsLoading(true);
+      const res = await axios.post("http://localhost:9000/api/user/login", {
+        username,
+        password,
+      });
+      if (res.status === 200) {
+        alert("Login successful!");
+        localStorage.setItem("token", res.data.token); // Store token in local storage
+        window.location.href = "/home"; // Redirect to home page
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError(
+        err.response?.data?.message || "Login failed. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleGenerateOtp = async (e) => {
@@ -62,12 +93,13 @@ const LoginSignup = ({ flag }) => {
     setIsLoading(true);
 
     try {
-      const { email, password, confirmPassword } = formData;
+      const { password, confirmPassword } = formData;
       if (password !== confirmPassword) {
         throw new Error("Passwords do not match");
       }
       await axios.post("http://localhost:9000/api/user/signup", {
-        email,
+        username: formData.name,
+        email: formData.email,
         password,
       });
       alert("Signup successful! Redirecting to login...");
@@ -109,7 +141,8 @@ const LoginSignup = ({ flag }) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="w-full px-10 py-12">
+            className="w-full px-10 py-12"
+          >
             <h2 className="text-3xl font-bold text-indigo-700 text-center mb-6">
               {isLogin ? "Login to EventHub" : "Create Your Account"}
             </h2>
@@ -125,7 +158,8 @@ const LoginSignup = ({ flag }) => {
                     : step === 2
                     ? handleVerifyOtp
                     : handleSignup
-                }>
+                }
+              >
                 {step === 1 && (
                   <>
                     <div className="relative">
@@ -157,7 +191,8 @@ const LoginSignup = ({ flag }) => {
                       disabled={isLoading}
                       className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all ${
                         isLoading ? "opacity-50 cursor-not-allowed" : ""
-                      }`}>
+                      }`}
+                    >
                       {isLoading ? "Generating OTP..." : "Generate OTP"}
                     </button>
                   </>
@@ -182,7 +217,8 @@ const LoginSignup = ({ flag }) => {
                       disabled={isLoading}
                       className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all ${
                         isLoading ? "opacity-50 cursor-not-allowed" : ""
-                      }`}>
+                      }`}
+                    >
                       {isLoading ? "Verifying OTP..." : "Verify OTP"}
                     </button>
                   </>
@@ -219,7 +255,8 @@ const LoginSignup = ({ flag }) => {
                       disabled={isLoading}
                       className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all ${
                         isLoading ? "opacity-50 cursor-not-allowed" : ""
-                      }`}>
+                      }`}
+                    >
                       {isLoading ? "Signing Up..." : "Sign Up"}
                     </button>
                   </>
@@ -228,13 +265,15 @@ const LoginSignup = ({ flag }) => {
             )}
 
             {isLogin && (
-              <form className="space-y-5">
+              <form className="space-y-5" onSubmit={handleLogin}>
                 <div className="relative">
                   <FaEnvelope className="absolute top-3 left-3 text-gray-400" />
                   <input
-                    type="email"
-                    placeholder="Email"
+                    type="text"
+                    placeholder="Username or Email"
                     className="pl-10 w-full p-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    name="username"
+                    id="username"
                   />
                 </div>
                 <div className="relative">
@@ -243,6 +282,8 @@ const LoginSignup = ({ flag }) => {
                     type="password"
                     placeholder="Password"
                     className="pl-10 w-full p-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    name="password"
+                    id="password"
                   />
                 </div>
                 <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all">
@@ -255,7 +296,8 @@ const LoginSignup = ({ flag }) => {
               {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
               <button
                 className="text-indigo-700 font-bold hover:underline"
-                onClick={() => setIsLogin(!isLogin)}>
+                onClick={() => setIsLogin(!isLogin)}
+              >
                 {isLogin ? "Sign Up" : "Login"}
               </button>
             </p>
