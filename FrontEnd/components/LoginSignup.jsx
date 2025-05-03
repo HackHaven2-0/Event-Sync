@@ -40,7 +40,7 @@ const LoginSignup = ({ flag }) => {
       if (res.status === 200) {
         alert("Login successful!");
         localStorage.setItem("token", res.data.token); // Store token in local storage
-        window.location.href = "/home"; // Redirect to home page
+        window.location.href = "/dashboard"; // Redirect to home page
       }
     } catch (err) {
       console.error("Login error:", err);
@@ -187,7 +187,7 @@ const LoginSignup = ({ flag }) => {
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all ${
+                      className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all cursor-pointer ${
                         isLoading ? "opacity-50 cursor-not-allowed" : ""
                       }`}>
                       {isLoading ? "Generating OTP..." : "Generate OTP"}
@@ -212,7 +212,7 @@ const LoginSignup = ({ flag }) => {
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all ${
+                      className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all cursor-pointer ${
                         isLoading ? "opacity-50 cursor-not-allowed" : ""
                       }`}>
                       {isLoading ? "Verifying OTP..." : "Verify OTP"}
@@ -249,7 +249,7 @@ const LoginSignup = ({ flag }) => {
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all ${
+                      className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all cursor-pointer ${
                         isLoading ? "opacity-50 cursor-not-allowed" : ""
                       }`}>
                       {isLoading ? "Signing Up..." : "Sign Up"}
@@ -281,7 +281,7 @@ const LoginSignup = ({ flag }) => {
                     id="password"
                   />
                 </div>
-                <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all">
+                <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all cursor-pointer">
                   Login
                 </button>
               </form>
@@ -290,7 +290,7 @@ const LoginSignup = ({ flag }) => {
             <p className="text-center text-gray-600 mt-6">
               {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
               <button
-                className="text-indigo-700 font-bold hover:underline"
+                className="text-indigo-700 font-bold hover:underline cursor-pointer"
                 onClick={() => setIsLogin(!isLogin)}>
                 {isLogin ? "Sign Up" : "Login"}
               </button>

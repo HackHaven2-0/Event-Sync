@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/EventCard.css";
+import "../styles/NavDash.css";
 
 const NavDash = () => {
   const navigateToDashboard = () => {
