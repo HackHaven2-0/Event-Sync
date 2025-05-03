@@ -37,12 +37,12 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <NavDash/>
+      <NavDash />
 
       {/* Filters and Search */}
       <div className="p-6 bg-white shadow-md flex flex-wrap items-center space-x-4">
         <button
-          onClick={() => (window.location.href = "/event  ")}
+          onClick={() => (window.location.href = "/dashboard/events")}
           className="bg-indigo-600 text-white px-4 py-2 rounded-lg">
           Host Event
         </button>
