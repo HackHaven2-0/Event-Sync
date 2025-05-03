@@ -6,6 +6,7 @@ import EventForm from "../pages/EventForm";
 import EventCard from "../components/EventCard";
 import LoginSignup from "../components/LoginSignup";
 
+import Profile from "../pages/Profile";
 import "./App.css";
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
           <Route path="/signup" element={<LoginSignup flag={false} />} />
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/dashboard/events" element={<EventForm />} />
-          <Route path="/dashboard/profile" element={<div>Profile Page</div>} />
+          <Route path="/dashboard/profile" element={<Profile/>} />
         </Routes>
     </div>
   );

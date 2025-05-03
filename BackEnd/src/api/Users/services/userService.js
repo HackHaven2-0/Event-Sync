@@ -36,8 +36,13 @@ const getEventsByOrganizer = async (organizerId) => {
   return await Event.find({ organizerId });
 };
 
+const getEventsByAttendee = async (attendeeId) => {
+  return await Event.find({ attendees: attendeeId });
+};
+
 export default {
   getUserById,
   updateUser,
   getEventsByOrganizer,
+  getEventsByAttendee,
 };
