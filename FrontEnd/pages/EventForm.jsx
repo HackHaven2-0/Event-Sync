@@ -66,14 +66,12 @@ const EventForm = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-3xl mx-auto p-8 bg-white shadow-xl rounded-2xl mt-10"
-      >
+        className="max-w-3xl mx-auto p-8 bg-white shadow-xl rounded-2xl mt-10">
         <motion.h2
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.4 }}
-          className="text-3xl font-extrabold text-center text-indigo-700 mb-6"
-        >
+          className="text-3xl font-extrabold text-center text-indigo-700 mb-6">
           Create a New Event
         </motion.h2>
 
@@ -114,8 +112,7 @@ const EventForm = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.05 * index }}
-              className="flex flex-col"
-            >
+              className="flex flex-col">
               <label className="text-gray-700 font-medium mb-1">
                 {field.label}
               </label>
@@ -126,8 +123,7 @@ const EventForm = () => {
                   onChange={handleInputChange}
                   placeholder={field.placeholder}
                   required
-                  className="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
-                ></textarea>
+                  className="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"></textarea>
               ) : (
                 <input
                   type={field.type}
@@ -147,16 +143,14 @@ const EventForm = () => {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col"
-          >
+            className="flex flex-col">
             <label className="text-gray-700 font-medium mb-1">Category</label>
             <select
               name="category"
               value={formData.category}
               onChange={handleInputChange}
               required
-              className="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
-            >
+              className="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
               <option value="">Select a category</option>
               {[
                 "sports",
@@ -185,8 +179,7 @@ const EventForm = () => {
             disabled={isLoading}
             className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl text-lg font-semibold shadow-md transition-all duration-300 ease-in-out ${
               isLoading ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-          >
+            }`}>
             {isLoading ? "Creating Event..." : "Create Event"}
           </motion.button>
         </form>
