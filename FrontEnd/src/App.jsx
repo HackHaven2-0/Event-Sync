@@ -1,26 +1,27 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "../pages/TempLandingPage";
-import "./App.css";
+import DashBoard from "../pages/Dashboard";
+import EventForm from "../pages/EventForm";
 import EventCard from "../components/EventCard";
 import LoginSignup from "../components/LoginSignup";
-// No changes needed as the import already matches the correct casing
+
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/card" element={<EventCard />} />
-        <Route path="/Login" element={<LoginSignup flag={true} />} />
-        <Route path="/Signup" element={<LoginSignup flag={false} />} />
-        
-        {/* Add more routes as you build out your application */}
-        {/* <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/signup" element={<Signup />} /> */}
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-      </Routes>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/card" element={<EventCard />} />
+          <Route path="/login" element={<LoginSignup flag={true} />} />
+          <Route path="/signup" element={<LoginSignup flag={false} />} />
+          <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/dashboard/events" element={<EventForm />} />
+          <Route path="/dashboard/profile" element={<div>Profile Page</div>} />
+        </Routes>
     </div>
   );
 }
+
 export default App;
