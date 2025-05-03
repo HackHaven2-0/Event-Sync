@@ -5,6 +5,7 @@ import cors from "cors";
 import connectDb from "./src/config/db.js";
 import userRouter from "./src/api/user/routes/userRoutes.js";
 import authRouter from "./src/api/auth/routes/authRoutes.js";
+import UserRouter from "./src/api/Users/routes/userRoutes.js";
 
 const app = express();
 
@@ -18,8 +19,7 @@ const port = process.env.PORT || 9000;
 connectDb();
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
-app.use("/api/users", userRoute);
-
+app.use("/api/users", UserRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
