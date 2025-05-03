@@ -3,29 +3,74 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("Home"); // Track the active link
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link); // Update the active link
+    if (isMenuOpen) setIsMenuOpen(false); // Close the menu in mobile view
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top of the page
+    handleLinkClick("Home"); // Set "Home" as the active link
+  };
 
   return (
     <>
-      <nav className="bg-white  p-4">
+      <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50 p-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className=" ml-6 text-4xl font-bold text-indigo-600">
+          <Link
+            to="/"
+            className="ml-6 text-4xl font-bold text-indigo-600"
+            onClick={scrollToTop} // Scroll to the top when the logo is clicked
+          >
             Event-Sync
           </Link>
 
           {/* Desktop Center Menu */}
           <div className="hidden md:flex flex-1 justify-center space-x-6 text-lg">
-            <Link to="/" className="text-gray-800 hover:text-indigo-600">
+            <Link
+              to="/"
+              className={`${
+                activeLink === "Home"
+                  ? "text-indigo-600 font-semibold"
+                  : "text-gray-800"
+              } hover:text-indigo-600`}
+              onClick={scrollToTop} // Scroll to the top when "Home" is clicked
+            >
               Home
             </Link>
-            <a href="#features" className="text-gray-800 hover:text-indigo-600">
+            <a
+              href="#feature"
+              className={`${
+                activeLink === "Features"
+                  ? "text-indigo-600 font-semibold"
+                  : "text-gray-800"
+              } hover:text-indigo-600`}
+              onClick={() => handleLinkClick("Features")}>
               Features
             </a>
-            <a href="#events" className="text-gray-800 hover:text-indigo-600">
+            <a
+              href="#event"
+              className={`${
+                activeLink === "Events"
+                  ? "text-indigo-600 font-semibold"
+                  : "text-gray-800"
+              } hover:text-indigo-600`}
+              onClick={() => handleLinkClick("Events")}>
               Events
             </a>
-            <a href="#contact" className="text-gray-800 hover:text-indigo-600">
+            <a
+              href="#contact"
+              className={`${
+                activeLink === "Contact"
+                  ? "text-indigo-600 font-semibold"
+                  : "text-gray-800"
+              } hover:text-indigo-600`}
+              onClick={() => handleLinkClick("Contact")}>
               Contact
             </a>
           </div>
@@ -47,9 +92,15 @@ const Navbar = () => {
           {/* Mobile Right Section: Log In + Toggle */}
           <div className="md:hidden flex items-center space-x-4">
             <Link
-              to="./LoginSignup"
-              className="text-gray-800 hover:text-indigo-600">
+              to="/Login"
+              className="text-gray-800 hover:text-indigo-600 text-sm">
               Log In
+            </Link>
+
+            <Link
+              to="/Signup"
+              className="text-gray-800 hover:text-indigo-600 text-sm">
+              Sign Up
             </Link>
             <button onClick={toggleMenu} className="text-gray-800 text-2xl">
               ☰
@@ -57,33 +108,61 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Dropdown (no login/signup here) */}
+        {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
           <div className="md:hidden bg-white px-4 pt-4 pb-6 space-y-4 shadow-lg">
             <Link
               to="/"
-              onClick={toggleMenu}
-              className="block text-gray-800 hover:text-indigo-600">
+              onClick={() => {
+                scrollToTop();
+                setIsMenuOpen(false);
+              }}
+              className={`block ${
+                activeLink === "Home"
+                  ? "text-indigo-600 font-semibold"
+                  : "text-gray-800"
+              } hover:text-indigo-600`}>
               Home
             </Link>
-            <Link
-              to="/features"
-              onClick={toggleMenu}
-              className="block text-gray-800 hover:text-indigo-600">
+            <a
+              href="#feature"
+              onClick={() => {
+                handleLinkClick("Features");
+                setIsMenuOpen(false);
+              }}
+              className={`block ${
+                activeLink === "Features"
+                  ? "text-indigo-600 font-semibold"
+                  : "text-gray-800"
+              } hover:text-indigo-600`}>
               Features
-            </Link>
-            <Link
-              to="/pricing"
-              onClick={toggleMenu}
-              className="block text-gray-800 hover:text-indigo-600">
+            </a>
+            <a
+              href="#event"
+              onClick={() => {
+                handleLinkClick("Events");
+                setIsMenuOpen(false);
+              }}
+              className={`block ${
+                activeLink === "Events"
+                  ? "text-indigo-600 font-semibold"
+                  : "text-gray-800"
+              } hover:text-indigo-600`}>
               Events
-            </Link>
-            <Link
-              to="/contact"
-              onClick={toggleMenu}
-              className="block text-gray-800 hover:text-indigo-600">
+            </a>
+            <a
+              href="#contact"
+              onClick={() => {
+                handleLinkClick("Contact");
+                setIsMenuOpen(false);
+              }}
+              className={`block ${
+                activeLink === "Contact"
+                  ? "text-indigo-600 font-semibold"
+                  : "text-gray-800"
+              } hover:text-indigo-600`}>
               About
-            </Link>
+            </a>
           </div>
         )}
       </nav>

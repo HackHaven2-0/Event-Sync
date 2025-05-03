@@ -141,10 +141,9 @@ const LoginSignup = ({ flag }) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="w-full px-10 py-12"
-          >
+            className="w-full px-10 py-12">
             <h2 className="text-3xl font-bold text-indigo-700 text-center mb-6">
-              {isLogin ? "Login to EventHub" : "Create Your Account"}
+              {isLogin ? "Login to Event-Sync" : "Create Your Account"}
             </h2>
 
             {error && <p className="text-red-500 text-center mb-4">{error}</p>}
@@ -158,24 +157,23 @@ const LoginSignup = ({ flag }) => {
                     : step === 2
                     ? handleVerifyOtp
                     : handleSignup
-                }
-              >
+                }>
                 {step === 1 && (
                   <>
                     <div className="relative">
-                      <FaUser className="absolute top-3 left-3 text-gray-400" />
+                      <FaUser className="absolute top-4 left-3 text-gray-400" />
                       <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="Full Name"
+                        placeholder="Username"
                         required
                         className="pl-10 w-full p-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-indigo-500"
                       />
                     </div>
                     <div className="relative">
-                      <FaEnvelope className="absolute top-3 left-3 text-gray-400" />
+                      <FaEnvelope className="absolute top-4 left-3 text-gray-400" />
                       <input
                         type="email"
                         name="email"
@@ -191,8 +189,7 @@ const LoginSignup = ({ flag }) => {
                       disabled={isLoading}
                       className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all ${
                         isLoading ? "opacity-50 cursor-not-allowed" : ""
-                      }`}
-                    >
+                      }`}>
                       {isLoading ? "Generating OTP..." : "Generate OTP"}
                     </button>
                   </>
@@ -201,7 +198,7 @@ const LoginSignup = ({ flag }) => {
                 {step === 2 && (
                   <>
                     <div className="relative">
-                      <FaLock className="absolute top-3 left-3 text-gray-400" />
+                      <FaLock className="absolute top-4 left-3 text-gray-400" />
                       <input
                         type="text"
                         name="otp"
@@ -217,8 +214,7 @@ const LoginSignup = ({ flag }) => {
                       disabled={isLoading}
                       className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all ${
                         isLoading ? "opacity-50 cursor-not-allowed" : ""
-                      }`}
-                    >
+                      }`}>
                       {isLoading ? "Verifying OTP..." : "Verify OTP"}
                     </button>
                   </>
@@ -227,7 +223,7 @@ const LoginSignup = ({ flag }) => {
                 {step === 3 && (
                   <>
                     <div className="relative">
-                      <FaLock className="absolute top-3 left-3 text-gray-400" />
+                      <FaLock className="absolute top-4 left-3 text-gray-400" />
                       <input
                         type="password"
                         name="password"
@@ -239,7 +235,7 @@ const LoginSignup = ({ flag }) => {
                       />
                     </div>
                     <div className="relative">
-                      <FaLock className="absolute top-3 left-3 text-gray-400" />
+                      <FaLock className="absolute top-4 left-3 text-gray-400" />
                       <input
                         type="password"
                         name="confirmPassword"
@@ -255,8 +251,7 @@ const LoginSignup = ({ flag }) => {
                       disabled={isLoading}
                       className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all ${
                         isLoading ? "opacity-50 cursor-not-allowed" : ""
-                      }`}
-                    >
+                      }`}>
                       {isLoading ? "Signing Up..." : "Sign Up"}
                     </button>
                   </>
@@ -267,7 +262,7 @@ const LoginSignup = ({ flag }) => {
             {isLogin && (
               <form className="space-y-5" onSubmit={handleLogin}>
                 <div className="relative">
-                  <FaEnvelope className="absolute top-3 left-3 text-gray-400" />
+                  <FaEnvelope className="absolute top-4 left-3 text-gray-400" />
                   <input
                     type="text"
                     placeholder="Username or Email"
@@ -277,7 +272,7 @@ const LoginSignup = ({ flag }) => {
                   />
                 </div>
                 <div className="relative">
-                  <FaLock className="absolute top-3 left-3 text-gray-400" />
+                  <FaLock className="absolute top-4 left-3 text-gray-400" />
                   <input
                     type="password"
                     placeholder="Password"
@@ -296,8 +291,7 @@ const LoginSignup = ({ flag }) => {
               {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
               <button
                 className="text-indigo-700 font-bold hover:underline"
-                onClick={() => setIsLogin(!isLogin)}
-              >
+                onClick={() => setIsLogin(!isLogin)}>
                 {isLogin ? "Sign Up" : "Login"}
               </button>
             </p>
