@@ -1,12 +1,21 @@
 import React from "react";
+import "../styles/EventCard.css";
 
 const NavDash = () => {
+  const navigateToDashboard = () => {
+    window.location.href = "/dashboard";
+  };
+
   return (
-    <nav className="bg-white shadow-md p-4 flex justify-between items-center">
-      <h1 className="ml-6 text-4xl font-bold text-indigo-600">Event-Sync</h1>
+    <nav className="relative bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 animate-gradient-x p-4 flex justify-between items-center shadow-md overflow-hidden">
+      <h1
+        onClick={navigateToDashboard}
+        className="ml-6 text-4xl font-bold text-white cursor-pointer">
+        Event-Sync
+      </h1>
       <button
         onClick={() => (window.location.href = "/dashboard/profile")}
-        className="bg-indigo-600 text-white px-4 py-2 rounded-lg">
+        className="bg-white text-indigo-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition">
         Profile
       </button>
     </nav>
