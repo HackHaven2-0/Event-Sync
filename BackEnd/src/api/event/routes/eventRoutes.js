@@ -1,9 +1,9 @@
 import express from 'express';
-import { createEvent } from '../controllers/eventController.js';
+// import { createEvent } from '../controllers/eventController.js';
 import authEvent from '../middlewares/authEvent.js';
 
 
-import { getAllEvents, getEventById, updateEvent, deleteEvent, getEventsByOrganizer } from '../controllers/eventController.js';
+import { getAllEvents, getEventById, updateEvent, deleteEvent, getEventsByOrganizer, createEvent } from '../controllers/eventController.js';
 const EventRouter = express.Router();
 
 EventRouter.post('/',authEvent,createEvent);
