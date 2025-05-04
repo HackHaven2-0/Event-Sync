@@ -100,7 +100,13 @@ const EventInfo = () => {
           <div className="event-meta">
             <div className="meta-item">
               <span className="meta-icon">📅</span>
-              <span className="meta-text">{eventDetails.date}</span>
+              <span className="meta-text">
+                {new Date(eventDetails.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </span>
             </div>
             <div className="meta-item">
               <span className="meta-icon">📍</span>
