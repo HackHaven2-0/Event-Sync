@@ -112,21 +112,17 @@ const EventCardProfileOrg = ({ event }) => {
 
   return (
     <motion.div
-      
       className="w-full sm:w-80 md:w-96 bg-white rounded-2xl overflow-hidden relative"
       variants={cardVariants}
       initial="initial"
       whileHover="hover"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      layoutId={`event-card-${event._id}`}
-    >
+      layoutId={`event-card-${event._id}`}>
       {/* Category Badge */}
       <div
         onClick={handleCardClick}
-        
-        className={`absolute top-4 left-4 ${categoryStyle.bg} ${categoryStyle.text} px-3 py-1 rounded-full text-sm font-medium flex items-center shadow-md z-10`}
-      >
+        className={`absolute top-4 left-4 ${categoryStyle.bg} ${categoryStyle.text} px-3 py-1 rounded-full text-sm font-medium flex items-center shadow-md z-10`}>
         <span className="mr-1">{categoryStyle.icon}</span>
         <span className="capitalize">{event.category}</span>
       </div>
@@ -144,11 +140,10 @@ const EventCardProfileOrg = ({ event }) => {
       {/* Banner Image */}
       <div className="relative">
         {!isImageLoaded && (
-
           <div className="w-full h-56 bg-gradient-to-r from-gray-200 to-gray-300 animate-pulse" />
         )}
         <motion.img
-        onClick={handleCardClick}
+          onClick={handleCardClick}
           className={`w-full h-56 object-cover ${
             isImageLoaded ? "opacity-100" : "opacity-0"
           }`}
@@ -163,13 +158,12 @@ const EventCardProfileOrg = ({ event }) => {
       </div>
 
       {/* Event Details */}
-      <div className="px-6 py-5">
+      <div className="px-6 py-5 relative">
         <motion.h2
           className="font-bold text-xl text-gray-800 mb-2 line-clamp-2"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-        >
+          transition={{ duration: 0.4, delay: 0.1 }}>
           {event.title}
         </motion.h2>
 
@@ -177,8 +171,7 @@ const EventCardProfileOrg = ({ event }) => {
           className="flex items-center text-gray-600 mb-4"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-        >
+          transition={{ duration: 0.4, delay: 0.2 }}>
           <FaCalendarAlt className="mr-2 text-indigo-500" />
           <span>{formattedDate}</span>
         </motion.div>
@@ -187,8 +180,7 @@ const EventCardProfileOrg = ({ event }) => {
           className="flex items-center text-gray-600 mb-4"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-        >
+          transition={{ duration: 0.4, delay: 0.3 }}>
           <FaMapMarkerAlt className="mr-2 text-red-500" />
           <span>{event.location}</span>
         </motion.div>
@@ -197,19 +189,23 @@ const EventCardProfileOrg = ({ event }) => {
           className="text-gray-600 mb-6 line-clamp-3"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-        >
+          transition={{ duration: 0.4, delay: 0.4 }}>
           {event.description}
         </motion.p>
 
-        {/* Delete Button */}
+        {/* Hoverable Banner */}
+        <motion.div
+          className="absolute inset-0 z-20 cursor-pointer"
+          onClick={handleCardClick}
+          initial={{ zIndex: 0 }}
+          whileHover={{ zIndex: 50 }}
+        />
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <motion.button
             onClick={() => setShowPrompt(true)}
             className="flex-1 bg-red-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-600 shadow-md flex items-center justify-center cursor-pointer"
             whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-          >
+            whileTap={{ scale: 0.97 }}>
             Delete Event
           </motion.button>
         </div>
@@ -224,16 +220,14 @@ const EventCardProfileOrg = ({ event }) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            onClick={() => setShowPrompt(false)}
-          >
+            onClick={() => setShowPrompt(false)}>
             <motion.div
               className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md mx-4"
               variants={modalVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              onClick={(e) => e.stopPropagation()}
-            >
+              onClick={(e) => e.stopPropagation()}>
               <div className="text-center mb-6">
                 <h3 className="text-xl font-bold text-gray-800 mb-2">
                   Delete "{event.title}"?
@@ -249,16 +243,14 @@ const EventCardProfileOrg = ({ event }) => {
                   onClick={handleDelete}
                   className="flex-1 bg-red-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-600 shadow-md flex items-center justify-center cursor-pointer"
                   whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                >
+                  whileTap={{ scale: 0.97 }}>
                   Yes, Delete
                 </motion.button>
                 <motion.button
                   onClick={() => setShowPrompt(false)}
                   className="flex-1 bg-gray-100 text-gray-800 px-6 py-3 rounded-xl font-bold hover:bg-gray-200 flex items-center justify-center cursor-pointer"
                   whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                >
+                  whileTap={{ scale: 0.97 }}>
                   Cancel
                 </motion.button>
               </div>

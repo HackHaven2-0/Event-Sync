@@ -152,7 +152,7 @@ const Profile = () => {
               ))
             ) : organizedEvents.length > 0 ? (
               organizedEvents.map((event) => (
-                <EventCard key={event._id} event={event} />
+                <EventCardProfileOrg key={event._id} event={event} />
               ))
             ) : (
               <div className="col-span-full text-center py-10 bg-white rounded-xl shadow-md border border-dashed border-indigo-300">
@@ -172,7 +172,11 @@ const Profile = () => {
                 <p className="text-gray-600">
                   You haven't organized any events yet.
                 </p>
-                <button className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                <button
+                  onClick={() => {
+                    window.location.href = "/dashboard/events";
+                  }}
+                  className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer">
                   Create Your First Event
                 </button>
               </div>
@@ -234,7 +238,11 @@ const Profile = () => {
                 <p className="text-gray-600">
                   You haven't attended any events yet.
                 </p>
-                <button className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                <button
+                  onClick={() => {
+                    window.location.href = "/dashboard";
+                  }}
+                  className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer">
                   Browse Available Events
                 </button>
               </div>
