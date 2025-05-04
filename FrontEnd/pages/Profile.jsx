@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EventCard from "../components/EventCard";
 import NavDash from "../components/NavDash";
+import EventCardProfileOrg from "../components/EventCardProfileOrg";
 
 const Profile = () => {
   const [user, setUser] = useState({ email: "", username: "" });
@@ -151,7 +152,7 @@ const Profile = () => {
             ))
           ) : organizedEvents.length > 0 ? (
             organizedEvents.map((event) => (
-              <EventCard key={event._id} event={event} />
+              <EventCardProfileOrg key={event._id} event={event} />
             ))
           ) : (
             <div className="col-span-full text-center py-10 bg-white rounded-xl shadow-md border border-dashed border-indigo-300">
