@@ -15,7 +15,7 @@ const NavDash = () => {
       </h1>
       <button
         onClick={() => (window.location.href = "/dashboard/profile")}
-        className="bg-white text-indigo-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition">
+        className="bg-white text-indigo-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition cursor-pointer">
         Profile
       </button>
     </nav>
