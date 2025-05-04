@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCheck, FaMapMarkerAlt, FaCalendarAlt, FaTag } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const EventCard = ({ event }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/eventinfo/${event._id}`); // Pass event ID as a query parameter
+  };
+
   const [isApplied, setIsApplied] = useState(false);
   const [showPrompt, setShowPrompt] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -172,6 +179,7 @@ const EventCard = ({ event }) => {
 
   return (
     <motion.div
+      onClick={handleCardClick}
       className="w-full sm:w-80 md:w-96 bg-white rounded-2xl overflow-hidden relative"
       variants={cardVariants}
       initial="initial"
