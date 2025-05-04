@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EventCard from "../components/EventCard";
 import NavDash from "../components/NavDash";
+import EventCardProfileOrg from "../components/EventCardProfileOrg";
 
 const Profile = () => {
   const [user, setUser] = useState({ email: "", username: "" });
@@ -48,6 +49,7 @@ const Profile = () => {
         );
         setAttendedEvents(attendedResponse.data.data);
       } catch (error) {
+        window.location.href = "/login";
         console.error("Error fetching profile data:", error);
       } finally {
         setIsLoading(false);
