@@ -179,7 +179,7 @@ const EventCard = ({ event }) => {
 
   return (
     <motion.div
-      onClick={handleCardClick}
+      
       className="w-full sm:w-80 md:w-96 bg-white rounded-2xl overflow-hidden relative"
       variants={cardVariants}
       initial="initial"
@@ -189,6 +189,8 @@ const EventCard = ({ event }) => {
       layoutId={`event-card-${event._id}`}>
       {/* Category Badge */}
       <div
+        onClick={handleCardClick}
+        style={{ cursor: "pointer" }}
         className={`absolute top-4 left-4 ${categoryStyle.bg} ${categoryStyle.text} px-3 py-1 rounded-full text-sm font-medium flex items-center shadow-md z-10`}>
         <span className="mr-1">{categoryStyle.icon}</span>
         <span className="capitalize">{event.category}</span>
@@ -210,6 +212,7 @@ const EventCard = ({ event }) => {
           <div className="w-full h-56 bg-gradient-to-r from-gray-200 to-gray-300 animate-pulse" />
         )}
         <motion.img
+          onClick={handleCardClick}
           className={`w-full h-56 object-cover ${
             isImageLoaded ? "opacity-100" : "opacity-0"
           }`}
@@ -226,6 +229,7 @@ const EventCard = ({ event }) => {
       {/* Event Details */}
       <div className="px-6 py-5">
         <motion.h2
+          onClick={handleCardClick}
           className="font-bold text-xl text-gray-800 mb-2 line-clamp-2"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -258,6 +262,7 @@ const EventCard = ({ event }) => {
           transition={{ duration: 0.4, delay: 0.4 }}>
           {event.description}
         </motion.p>
+
 
         {/* Apply Button */}
         <motion.div

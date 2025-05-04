@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EventCard from "../components/EventCard";
 import NavDash from "../components/NavDash";
+import EventCardProfileOrg from "../components/EventCardProfileOrg";
 
 const Profile = () => {
   const [user, setUser] = useState({ email: "", username: "" });
