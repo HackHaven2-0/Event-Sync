@@ -47,6 +47,7 @@ const Profile = () => {
         );
         setAttendedEvents(attendedResponse.data.data);
       } catch (error) {
+        window.location.href = "/login";
         console.error("Error fetching profile data:", error);
       } finally {
         setIsLoading(false);

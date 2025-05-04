@@ -32,6 +32,11 @@ const EventForm = () => {
 
     try {
       const token = localStorage.getItem("token");
+      if (!token) {
+        setError("You must be logged in to create an event.");
+        window.location.href = "/login";
+        return;
+      }
       const response = await axios.post(
         "http://localhost:9000/api/events",
         { ...formData, attendees },
