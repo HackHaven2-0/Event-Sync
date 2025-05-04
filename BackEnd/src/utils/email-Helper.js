@@ -30,6 +30,22 @@ const sendEmail = async ({ emails, subject, html }) => {
   }
 };
 
+const sendEmailToattendees = async ({ emails, subject, text , email }) => {
+  try {
+    const info = await transporter.sendMail({
+      from: `"Event Sync" ,${email} `,// sender address
+      to: emails, 
+      subject: subject,
+      text: text, 
+    });
+    
+  } catch (err) {
+    console.log("could not send email to " + emails);
+    console.log(err.message);
+    throw err ;
+  }
+}
+
 const sendOtpEmail = async ({ otp, email }) => {
   await sendEmail({
     emails: [email],
@@ -51,4 +67,4 @@ const sendOtpEmail = async ({ otp, email }) => {
 };
 
 
-export { sendOtpEmail };
+export { sendOtpEmail , sendEmail, sendEmailToattendees };
