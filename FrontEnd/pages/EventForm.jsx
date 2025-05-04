@@ -37,7 +37,7 @@ const EventForm = () => {
         window.location.href = "/login";
         return;
       }
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:9000/api/events",
         { ...formData, attendees },
         {
