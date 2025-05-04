@@ -170,7 +170,11 @@ const Profile = () => {
                 <p className="text-gray-600">
                   You haven't organized any events yet.
                 </p>
-                <button className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                <button
+                  onClick={() => {
+                    window.location.href = "/dashboard/events";
+                  }}
+                  className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
                   Create Your First Event
                 </button>
               </div>
@@ -232,7 +236,11 @@ const Profile = () => {
                 <p className="text-gray-600">
                   You haven't attended any events yet.
                 </p>
-                <button className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                <button
+                  onClick={() => {
+                    window.location.href = "/dashboard";
+                  }}
+                  className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
                   Browse Available Events
                 </button>
               </div>
