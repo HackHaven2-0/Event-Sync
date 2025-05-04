@@ -179,7 +179,6 @@ const EventCard = ({ event }) => {
 
   return (
     <motion.div
-      
       className="w-full sm:w-80 md:w-96 bg-white rounded-2xl overflow-hidden relative"
       variants={cardVariants}
       initial="initial"
@@ -207,13 +206,13 @@ const EventCard = ({ event }) => {
       </div>
 
       {/* Banner Image with Gradient Overlay */}
-      <div className="relative">
+      <div className="relative group">
         {!isImageLoaded && (
           <div className="w-full h-56 bg-gradient-to-r from-gray-200 to-gray-300 animate-pulse" />
         )}
         <motion.img
           onClick={handleCardClick}
-          className={`w-full h-56 object-cover ${
+          className={`w-full h-56 object-cover transition-transform duration-300 group-hover:z-10 group-hover:scale-105 cursor-pointer ${
             isImageLoaded ? "opacity-100" : "opacity-0"
           }`}
           src={event.banner || "https://via.placeholder.com/400x225?text=Event"}
@@ -223,7 +222,7 @@ const EventCard = ({ event }) => {
           animate={{ opacity: isImageLoaded ? 1 : 0 }}
           transition={{ duration: 0.5 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
       </div>
 
       {/* Event Details */}
@@ -262,7 +261,6 @@ const EventCard = ({ event }) => {
           transition={{ duration: 0.4, delay: 0.4 }}>
           {event.description}
         </motion.p>
-
 
         {/* Apply Button */}
         <motion.div
