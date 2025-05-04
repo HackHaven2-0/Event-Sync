@@ -24,6 +24,24 @@ const EventInfo = () => {
         );
         const data = await response.json();
         setEventDetails(data.event[0]);
+        console.log(eventDetails);
+        const organizerResponse = await fetch(
+          `http://localhost:9000/api/users/${data.event[0].organizerId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        const organizerData = await organizerResponse.json();
+        console.log(organizerData);
+        console.log(eventDetails);
+        setEventDetails((prevDetails) => ({
+          ...prevDetails,
+          organizer: organizerData.data.username,
+        }));
         setIsLoading(false);
 
         // Trigger animation after data is loaded
@@ -40,6 +58,7 @@ const EventInfo = () => {
       fetchEventDetails();
     }
   }, [eventId]);
+  // console.log(eventDetails);
 
   const handleApplyNow = () => {
     alert("Application submitted!"); // Replace with actual application logic
@@ -63,13 +82,13 @@ const EventInfo = () => {
   return (
     <>
       <NavDash />
-      <div className={`event-container ${animateIn ? "animate-in" : ""}`}>
+            <div className={`event-container ${animateIn ? "animate-in" : ""}`}>
         {/* Banner Section */}
         <div
           className="event-banner"
           style={{
             backgroundImage: `url(${
-              eventDetails.bannerUrl || "/default-banner.jpg"
+              eventDetails.banner || "/default-banner.jpg"
             })`,
           }}>
           <div className="banner-overlay"></div>
@@ -106,15 +125,7 @@ const EventInfo = () => {
                 {eventDetails.organizer || "Not specified"}
               </li>
               <li className="detail-item">
-                <strong>Contact:</strong>{" "}
-                {eventDetails.contact || "Not specified"}
-              </li>
-              <li className="detail-item">
                 <strong>Category:</strong> {eventDetails.category || "General"}
-              </li>
-              <li className="detail-item">
-                <strong>Capacity:</strong>{" "}
-                {eventDetails.capacity || "Unlimited"} attendees
               </li>
             </ul>
           </div>
