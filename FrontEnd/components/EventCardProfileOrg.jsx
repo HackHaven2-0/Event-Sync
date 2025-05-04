@@ -41,7 +41,9 @@ const EventCardProfileOrg = ({ event, onDelete }) => {
   const handleCardClick = () => {
     navigate(`/eventinfo/${event._id}`);
   };
-
+  const handlemailClick = () => {
+    navigate(`/email/${event._id}`);
+  };
   const handleDelete = async () => {
     try {
       const eventId = event._id;
@@ -173,8 +175,16 @@ const EventCardProfileOrg = ({ event, onDelete }) => {
           {event.description}
         </motion.p>
 
-        {/* Delete Button */}
+        {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <motion.button
+            onClick={handlemailClick}
+            className="flex-1 bg-blue-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-600 shadow-md flex items-center justify-center cursor-pointer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Email
+          </motion.button>
           <motion.button
             onClick={() => setShowPrompt(true)}
             className="flex-1 bg-red-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-600 shadow-md flex items-center justify-center cursor-pointer"
