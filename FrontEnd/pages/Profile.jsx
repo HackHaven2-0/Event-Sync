@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EventCard from "../components/EventCard";
+import NavDash from "../components/NavDash";
 
 const Profile = () => {
   const [user, setUser] = useState({ email: "", username: "" });
@@ -67,6 +68,8 @@ const Profile = () => {
   };
 
   return (
+    <>
+    <NavDash/>
     <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-blue-100 p-6 md:p-8">
       {/* User Info */}
         <div className="bg-white shadow-lg rounded-xl p-6 mb-8 border border-indigo-100 transition-all hover:shadow-xl">
@@ -148,7 +151,7 @@ const Profile = () => {
             ))
           ) : organizedEvents.length > 0 ? (
             organizedEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
+              <EventCard key={event._id} event={event} />
             ))
           ) : (
             <div className="col-span-full text-center py-10 bg-white rounded-xl shadow-md border border-dashed border-indigo-300">
@@ -210,7 +213,7 @@ const Profile = () => {
             ))
           ) : attendedEvents.length > 0 ? (
             attendedEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
+              <EventCard key={event._id} event={event} />
             ))
           ) : (
             <div className="col-span-full text-center py-10 bg-white rounded-xl shadow-md border border-dashed border-indigo-300">
@@ -238,6 +241,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
