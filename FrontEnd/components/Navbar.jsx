@@ -24,9 +24,9 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="ml-6 text-4xl font-bold text-indigo-600"
+            className="ml-6 text-4xl font-normal text-indigo-600"
             onClick={scrollToTop} // Scroll to the top when the logo is clicked
-          >
+            style={{ fontFamily: "Wallpoet, sans-serif" }}>
             Event-Sync
           </Link>
 
@@ -171,3 +171,35 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// {/* Desktop Auth Links */}
+// <div className="hidden md:flex space-x-4">
+// <Link
+//   to="/Login"
+//   className="text-gray-800 hover:text-indigo-600 text-lg">
+//   Log In
+// </Link>
+// <Link
+//   to="/Signup"
+//   className="text-gray-800 hover:text-indigo-600 text-lg">
+//   Sign Up
+// </Link>
+// </div>
+
+// {/* Mobile Right Section: Log In + Toggle */}
+// <div className="md:hidden flex items-center space-x-4">
+// <Link
+//   to="/Login"
+//   className="text-gray-800 hover:text-indigo-600 text-sm">
+//   Log In
+// </Link>
+
+// <Link
+//   to="/Signup"
+//   className="text-gray-800 hover:text-indigo-600 text-sm">
+//   Sign Up
+// </Link>
+// <button onClick={toggleMenu} className="text-gray-800 text-2xl">
+//   ☰
+// </button>
+// </div>

@@ -10,7 +10,8 @@ const NavDash = () => {
     <nav className="relative bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 animate-gradient-x p-4 flex justify-between items-center shadow-md overflow-hidden">
       <h1
         onClick={navigateToDashboard}
-        className="ml-6 text-4xl font-bold text-white cursor-pointer">
+        className="ml-6 text-4xl font-medium text-white cursor-pointer hover:text-gray-300 transition-colors"
+        style={{ fontFamily: "Wallpoet, sans-serif" }}>
         Event-Sync
       </h1>
       <button
