@@ -8,6 +8,7 @@ import LoginSignup from "../components/LoginSignup";
 import EventInfo from "../pages/EventInfo";
 import Profile from "../pages/Profile";
 import "./App.css";
+import MailForm from "../components/MailForm";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/dashboard/events" element={<EventForm />} />
         <Route path="/dashboard/profile" element={<Profile />} />
+        <Route path="/email/:eventId" element={<MailForm />} />
+        
+         
       </Routes>
     </div>
   );
