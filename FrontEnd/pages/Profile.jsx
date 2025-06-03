@@ -16,7 +16,7 @@ const Profile = () => {
       try {
         // Fetch user profile data
         const userResponse = await axios.get(
-          "http://localhost:9000/api/users/profile",
+          "https://event-sync-x47b.onrender.com/api/users/profile",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -28,7 +28,7 @@ const Profile = () => {
 
         // Fetch organized events
         const organizedResponse = await axios.get(
-          "http://localhost:9000/api/users/organizer/events",
+          "https://event-sync-x47b.onrender.com/api/users/organizer/events",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -40,7 +40,7 @@ const Profile = () => {
 
         // Fetch attended events
         const attendedResponse = await axios.get(
-          "http://localhost:9000/api/users/attended/events",
+          "https://event-sync-x47b.onrender.com/api/users/attended/events",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
