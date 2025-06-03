@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 
 import { sendOtpEmail } from "../../../utils/email-Helper.js";
-import Otp from "../../../model/Otp.js";
+import Otp from "../../../model/otp.js";
 import User from "../../../model/userModel.js";
 
 const sendOtpController = async (req, res) => {
