@@ -48,7 +48,7 @@ const EventCardProfileOrg = ({ event, onDelete }) => {
     try {
       const eventId = event._id;
       const response = await fetch(
-        `http://localhost:9000/api/events/${eventId}`,
+        `https://event-sync-x47b.onrender.com/api/events/${eventId}`,
         {
           method: "DELETE",
           headers: {
