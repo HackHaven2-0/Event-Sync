@@ -1,5 +1,5 @@
 // const Otp = require("../../../model/otp.js");
-import Otp from "../../../model/Otp.js";
+import Otp from "../../../model/otp.js";
 import bcrypt from "bcrypt";
 
 const verifyOtpController = async (req, res) => {
